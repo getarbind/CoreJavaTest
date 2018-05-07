@@ -46,8 +46,19 @@ class BinarySearchTree {
  
     // This method mainly calls InorderRec()
     void inorder()  {
+    	System.out.println("InOrder Search");
        inorderRec(root);
     }
+    
+    void preorder()  {
+    	System.out.println("PreOrder Search");
+        preorderRec(root);
+     }
+    
+    void postorder()  {
+    	System.out.println("PostOrder Search");
+        postorderRec(root);
+     }
  
     // A utility function to do inorder traversal of BST
     void inorderRec(Node root) {
@@ -57,7 +68,24 @@ class BinarySearchTree {
             inorderRec(root.right);
         }
     }
- 
+
+    void preorderRec(Node root) {
+        if (root != null) {
+        	System.out.println(root.key);
+        	preorderRec(root.left);
+            preorderRec(root.right);
+        }
+    }
+
+    void postorderRec(Node root) {
+        if (root != null) {
+        	postorderRec(root.left);
+            postorderRec(root.right);
+        	System.out.println(root.key);
+        }
+    }
+    
+    
     // Driver Program to test above functions
     public static void main(String[] args) {
         BinarySearchTree tree = new BinarySearchTree();
@@ -78,6 +106,10 @@ class BinarySearchTree {
  
         // print inorder traversal of the BST
         tree.inorder();
+        
+        tree.preorder();
+        
+        tree.postorder();
     }
 }
-// This code is contributed by Ankur Narain Verma
+
