@@ -104,6 +104,15 @@ class BinarySearchTree {
         tree.insert(60);
         tree.insert(80);
  
+        
+        /*
+         * Depth First Traversals:
+			(a) Inorder (Left, Root, Right) : 20 30 40 50 60 70 80
+			(b) Preorder (Root, Left, Right) : 50  30 20 40 70 60 80
+			(c) Postorder (Left, Right, Root) : 20 40 30 60 80 70 50
+
+			Breadth First or Level Order Traversal : 50 30 70 20 40 60 80
+         */
         // print inorder traversal of the BST
         tree.inorder();
         
