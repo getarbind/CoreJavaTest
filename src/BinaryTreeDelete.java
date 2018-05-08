@@ -45,10 +45,11 @@ public class BinaryTreeDelete {
 			deleteRec(root2.right);
 			
 			System.out.println("Deleting Node"+ root2.key);
-			root2 = null;
+			//root2 = null;
+			root2.left=null;
+			root2.right=null;
 		}
-		
-		
+
 	}
 
 	private void inOrder() {
