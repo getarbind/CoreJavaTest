@@ -1,35 +1,26 @@
-import java.util.HashMap;
-
 public class BinaryGap {
 
 	public static void main(String[] args) {
-		int num = 129;
+		int num = 1259;
 		int gap = findBinaryGap(num);
-		
+		System.out.println("Max Binary gap : " + gap);
 	}
 
 	private static int findBinaryGap(int num) {
 		String bin = Integer.toBinaryString(num);
-		HashMap<Integer, Integer> gap = new HashMap<Integer, Integer>();
-		int count = 0, num1 =1;
+		int count = 0, maxCount = 0;
 		for (int i = 0;i<bin.length();i++)
 		{
 			if (bin.charAt(i) == '1')
 			{
-				if (i>0 && bin.charAt(i-1) == '0' ) {
-					gap.put(num1, count);
-					num1++;
-					System.out.println(num1 + " : "+ count);
+				if (i > 0 && bin.charAt(i-1) == '0' ) {
+					if (count > maxCount) maxCount = count;
 				}
 				count = 0;
-			
 			}
-			
 			if (bin.charAt(i) == '0') count++;
-			
 		}
 		System.out.println(bin);
-		return 0;
+		return maxCount;
 	}
-
 }
