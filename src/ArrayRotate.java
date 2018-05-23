@@ -3,25 +3,33 @@ public class ArrayRotate {
 	
 	public static void main(String [] args){
 		int[] array = {1,2,3,4,5,6};
-		
-		rorateArray(array, 3);
+		//int[] array = {1};
+		int[] rr = solution(array, 13);
+		for (int k=0;k< rr.length;k++)System.out.println(rr[k]);
 	}
 
-	private static void rorateArray(int[] array, int k) {
-		int[] arrayResult = new int[array.length];
-		int pos;
-		for (int i =0;i<array.length;i++){
-			
-			if ((i+k) >array.length-1){
-				pos = Math.abs(array.length - (i+k));
-			} else {
-				pos = i+k;
+		  public static int[] solution(int[] A, int K) {
+		        // write your code in Java SE 8
+				if (A.length == 0) return A;
+        		int[] arrayResult = new int[A.length];
+				int pos;
+				if (K > A.length) K = K % A.length;
+				if (A.length == 1){
+					return A;
+				} else {
+				for (int i =0;i<A.length;i++){
+					
+					if ((i+K) >A.length-1){
+						pos = Math.abs(A.length - (i+K));
+					} else {
+						pos = i+K;
+					}
+					arrayResult[pos] = A[i];
+					
+				}
+				return arrayResult;
 			}
-			arrayResult[pos] = array[i];
-			System.out.println(pos +" : "+i);
-		}
-		for (int i = 0;i<array.length;i++)
-		System.out.println(arrayResult[i]);
+		    
 	}
 
 }
