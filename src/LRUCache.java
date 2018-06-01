@@ -11,9 +11,14 @@ class Node{
 	}
 }
 public class LRUCache {
+	int capacity;
 	Node head = null;
 	Node end = null;
 	HashMap<Integer, Node> map = new HashMap<Integer , Node>();
+	
+	public LRUCache(int capacity){
+		this.capacity = capacity;
+	}
 
 	public String get(int key){
 		if (map.containsKey(key)){
@@ -59,8 +64,16 @@ public class LRUCache {
 		}
 		else {
 			Node newNode = new Node (key,value);
+			if (map.size() >= capacity){
+				map.remove(end.key);
+				remove (end);
+				setHead (newNode);
+				
+			} else{
 			setHead(newNode);
+			}
 			map.put(key, newNode);
+			
 		}
 	}
 	
@@ -79,7 +92,7 @@ public class LRUCache {
 
 	{
 
-	LRUCache lr=new LRUCache();
+	LRUCache lr=new LRUCache(5);
 	lr.set(1, "1");
 	lr.set(2,"2");
 	lr.set(3, "3");
